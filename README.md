@@ -11,7 +11,7 @@ Passos:
 git add .
 git update-index --chmod=+x ./build.sh
 git commit -m 'adding execute permissions'
-git push ionic master
+git push
 ```
 
 
