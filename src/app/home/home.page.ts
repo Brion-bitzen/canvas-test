@@ -3,6 +3,7 @@ import { RefresherCustomEvent } from '@ionic/angular';
 import { MessageComponent } from '../message/message.component';
 
 import { DataService, Message } from '../services/data.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,11 @@ import { DataService, Message } from '../services/data.service';
 })
 export class HomePage {
   private data = inject(DataService);
-  constructor() {}
+
+  public apiURL: string;
+  constructor() {
+    this.apiURL = environment.apiUrl;
+  }
 
   refresh(ev: any) {
     setTimeout(() => {
