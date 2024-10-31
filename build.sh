@@ -1,6 +1,10 @@
 #!/bin/bash
 if [ "$CI_GIT_REF" = "main" ]; then
-    npx ionic build --prod
+  if [ \"$CI_PLATFORM\" != \"web\" ]; then
+    npx trapeze run appflow.yml -y --$CI_PLATFORM
+  fi && npx ionic build --prod
 else
-    npx ionic build
+  if [ \"$CI_PLATFORM\" != \"web\" ]; then
+    npx trapeze run appflow.yml -y --$CI_PLATFORM
+  fi && npx ionic build
 fi
